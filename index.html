@@ -142,6 +142,7 @@
             font-size: 1.2rem;
             color: #ffffff;
             margin-bottom: 25px;
+            opacity: 0.9;
         }
 
         /* GRID DE MÉTRICAS */
@@ -153,11 +154,11 @@
         }
 
         .metric-card {
-            background-color: var(--bg-main);
+            background-color: transparent;
             padding: 25px 20px;
             border-radius: 8px;
             text-align: center;
-            border: 2px solid var(--bg-accent);
+            border: 1px solid var(--color-orange);
         }
 
         .metric-value {
@@ -203,75 +204,80 @@
             color: var(--color-gold);
         }
 
-        /* TABELAS REFINADAS */
-        .table-responsive {
-            overflow-x: auto;
+        /* NOVAS ÁREAS DE DADOS FLUIDAS E CONTÍNUAS (SUBSTITUINDO AS TABELAS) */
+        .data-list-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
             margin: 25px 0;
+        }
+
+        .data-row-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
             border-radius: 8px;
-            border: 1px solid var(--bg-accent);
+            border: 1px solid rgba(230, 218, 209, 0.1);
+            background: transparent;
+            transition: border-color 0.3s ease;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--bg-main);
-            text-align: left;
+        .data-row-flow:hover {
+            border-color: rgba(244, 178, 102, 0.3);
         }
 
-        th {
-            background-color: var(--bg-accent);
-            color: var(--color-gold);
-            padding: 18px 15px;
-            font-size: 1.05rem;
+        .data-row-flow.highlighted {
+            border: 1px solid var(--color-green);
+            background: rgba(0, 255, 135, 0.03);
+        }
+
+        .data-label-flow {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .data-value-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .data-value-flow {
+            font-size: 1.15rem;
             font-weight: 700;
-            border-bottom: 2px solid var(--color-orange);
+            color: #ffffff;
         }
 
-        td {
-            padding: 18px 15px;
-            border-bottom: 1px solid var(--bg-accent);
-            font-size: 1.05rem;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* BADGES */
-        .badge {
+        /* BADGES CONTINUOS */
+        .badge-flow {
             display: inline-block;
-            padding: 6px 14px;
+            padding: 4px 12px;
             border-radius: 4px;
-            font-weight: 800;
-            font-size: 0.85rem;
+            font-weight: 700;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border: 1px solid transparent;
         }
 
-        .badge-red {
-            background-color: #5c1818;
+        .badge-flow-red {
+            border-color: #a82c2c;
             color: #ff9494;
-            border: 1px solid #a82c2c;
+            background: rgba(168, 44, 44, 0.1);
         }
 
-        .badge-green {
-            background-color: var(--color-green);
-            color: #000000;
-        }
-
-        .text-right {
-            text-align: right;
-        }
-
-        .highlight-row {
-            background-color: #0e2b1e;
-            font-weight: bold;
-        }
-
-        .highlight-row td {
+        .badge-flow-green {
+            border-color: var(--color-green);
             color: var(--color-green);
-            border-top: 1px solid var(--color-green);
-            border-bottom: 1px solid var(--color-green);
+            background: rgba(0, 255, 135, 0.1);
+        }
+
+        .badge-flow-gold {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+            background: rgba(244, 178, 102, 0.1);
         }
 
         /* BOTÃO DE AÇÃO PREMIUM */
@@ -347,13 +353,15 @@
             .hero p { font-size: 1.1rem; }
             h2.section-title { font-size: 1.6rem; }
             section.viabilidade-section { padding: 25px 20px; }
-            th, td { padding: 12px 10px; font-size: 0.95rem; }
+            .data-row-flow { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .data-value-group { width: 100%; justify-content: space-between; }
             .gallery-card-wrapper { min-height: 350px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- HERO / APRESENTAÇÃO PRINCIPAL -->
     <section class="hero">
         <div class="hero-content">
             <span class="hero-tag">Urban Company • Inteligência Estratégica</span>
@@ -365,8 +373,10 @@
         </div>
     </section>
 
+    <!-- CONTEÚDO PRINCIPAL -->
     <div class="container">
         
+        <!-- SEÇÃO 1: ANÁLISE DE MERCADO -->
         <section class="viabilidade-section">
             <div class="section-header-viabilidade">
                 <span class="section-tag-viabilidade">Análise de Mercado</span>
@@ -375,7 +385,7 @@
             <p class="lead">O produto imobiliário ideal para investidores focados em ativos líquidos e de alta performance urbana.</p>
             
             <div class="metric-grid">
-                <div class="metric-card" style="border-color: var(--color-orange);">
+                <div class="metric-card">
                     <div class="metric-value orange">96 / 100</div>
                     <div class="metric-label">Walk Score (Walker's Paradise)</div>
                 </div>
@@ -387,11 +397,12 @@
 
             <ul class="custom-list">
                 <li><strong>Localização Privilegiada:</strong> Situado na Rua Barbedo, 303 — No coração pulsante do Menino Deus.</li>
-                <li><strong>Polos de Tração Próximos:</strong> A apenas 3 minutes a pé do Hospital Mãe de Deus e do Parque Marinha, atraindo um fluxo constante de profissionais de saúde, pacientes e corporativos.</li>
+                <li><strong>Polos de Tração Próximos:</strong> A apenas 3 minutos a pé do Hospital Mãe de Deus e do Parque Marinha, atraindo um fluxo constante de profissionais de saúde, pacientes e corporativos.</li>
                 <li><strong>Resiliência Comercial:</strong> Perfil de habitação inteligente (compactos premium) blindado contra oscilações do mercado tradicional.</li>
             </ul>
         </section>
 
+        <!-- SEÇÃO 2: MARGEM DE PROTEÇÃO (AGORA TOTALMENTE FLUIDA) -->
         <section class="viabilidade-section">
             <div class="section-header-viabilidade">
                 <span class="section-tag-viabilidade">Estratégia de Entrada</span>
@@ -399,36 +410,34 @@
             </div>
             <p class="lead">O lucro do investidor experiente começa na assinatura do contrato, capturando a assimetria de preço do pré-lançamento:</p>
 
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Cenário de Compra</th>
-                            <th class="text-right">Valor Nominal</th>
-                            <th style="text-align: center;">Status do Lote</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Preço de Tabela Regular (Abertura do Lançamento)</td>
-                            <td class="text-right">R$ 310.681,97</td>
-                            <td style="text-align: center;"><span class="badge badge-red">Público Geral</span></td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold; color: var(--color-gold);">Lote Exclusivo de Oportunidade Atual</td>
-                            <td class="text-right" style="font-weight: bold; color: var(--color-gold);">R$ 284.291,00</td>
-                            <td style="text-align: center;"><span class="badge badge-green">Seu Lote</span></td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td>Margem de Lucro Bruta na Entrada (Desconto Real)</td>
-                            <td class="text-right">R$ 26.390,97</td>
-                            <td style="text-align: center;"><span class="badge badge-green">Ganho Imediato</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="data-list-flow">
+                <div class="data-row-flow">
+                    <span class="data-label-flow">Preço de Tabela Regular (Abertura do Lançamento)</span>
+                    <div class="data-value-group">
+                        <span class="data-value-flow">R$ 310.681,97</span>
+                        <span class="badge-flow badge-flow-red">Público Geral</span>
+                    </div>
+                </div>
+                
+                <div class="data-row-flow">
+                    <span class="data-label-flow" style="color: var(--color-gold); font-weight: bold;">Lote Exclusivo de Oportunidade Atual</span>
+                    <div class="data-value-group">
+                        <span class="data-value-flow" style="color: var(--color-gold);">R$ 284.291,00</span>
+                        <span class="badge-flow badge-flow-gold">Seu Lote</span>
+                    </div>
+                </div>
+
+                <div class="data-row-flow highlighted">
+                    <span class="data-label-flow" style="color: var(--color-green); font-weight: bold;">Margem de Lucro Bruta na Entrada (Desconto Real)</span>
+                    <div class="data-value-group">
+                        <span class="data-value-flow" style="color: var(--color-green);">R$ 26.390,97</span>
+                        <span class="badge-flow badge-flow-green">Ganho Imediato</span>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- SEÇÃO 3: EVOLUÇÃO PATRIMONIAL (AGORA TOTALMENTE FLUIDA) -->
         <section class="viabilidade-section">
             <div class="section-header-viabilidade">
                 <span class="section-tag-viabilidade">Evolução Patrimonial</span>
@@ -436,41 +445,42 @@
             </div>
             <p class="lead">Histórico de valorização estimado com base no índice composto de 12% ao ano sobre o valor do ativo durante os 36 meses de obras:</p>
 
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Estágio do Projeto</th>
-                            <th class="text-right">Preço Estimado do Ativo</th>
-                            <th class="text-right">Valorização Acumulada</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Pré-Lançamento (Base Tabela Geral)</strong></td>
-                            <td class="text-right">R$ 310.681,97</td>
-                            <td class="text-right" style="color: var(--color-muted);">—</td>
-                        </tr>
-                        <tr>
-                            <td>Fim do Ano 1 de Obra</td>
-                            <td class="text-right">R$ 347.963,80</td>
-                            <td class="text-right" style="color: var(--color-green); font-weight: bold;">+ R$ 37.281,83</td>
-                        </tr>
-                        <tr>
-                            <td>Fim do Ano 2 de Obra</td>
-                            <td class="text-right">R$ 389.719,46</td>
-                            <td class="text-right" style="color: var(--color-green); font-weight: bold;">+ R$ 79.037,49</td>
-                        </tr>
-                        <tr style="background-color: var(--bg-accent); font-weight: bold;">
-                            <td style="color: var(--color-gold);">Entrega das Chaves (Conclusão - Ano 3)</td>
-                            <td class="text-right" style="color: #ffffff;">R$ 436.485,80</td>
-                            <td class="text-right" style="color: var(--color-green); font-weight: bold;">+ R$ 125.803,83</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="data-list-flow">
+                <div class="data-row-flow">
+                    <span class="data-label-flow">Pré-Lançamento (Base Tabela Geral)</span>
+                    <div class="data-value-group">
+                        <span class="data-value-flow">R$ 310.681,97</span>
+                        <span class="badge-flow" style="color: var(--color-muted); border-color: rgba(255,255,255,0.1)">Valor Inicial</span>
+                    </div>
+                </div>
+
+                <div class="data-row-flow">
+                    <span class="data-label-flow">Fim do Ano 1 de Obra</span>
+                    <div class="data-value-group">
+                        <span class="data-value-flow">R$ 347.963,80</span>
+                        <span class="badge-flow badge-flow-green">+ R$ 37.281,83</span>
+                    </div>
+                </div>
+
+                <div class="data-row-flow">
+                    <span class="data-label-flow">Fim do Ano 2 de Obra</span>
+                    <div class="data-value-group">
+                        <span class="data-value-flow">R$ 389.719,46</span>
+                        <span class="badge-flow badge-flow-green">+ R$ 79.037,49</span>
+                    </div>
+                </div>
+
+                <div class="data-row-flow" style="border-color: var(--color-gold); background: rgba(244, 178, 102, 0.02);">
+                    <span class="data-label-flow" style="color: var(--color-gold); font-weight: bold;">Entrega das Chaves (Conclusão - Ano 3)</span>
+                    <div class="data-value-group">
+                        <span class="data-value-flow" style="color: #ffffff;">R$ 436.485,80</span>
+                        <span class="badge-flow badge-flow-green" style="background: var(--color-green); color: #000000; font-weight: 800;">+ R$ 125.803,83</span>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- SEÇÃO GALERIA -->
         <section class="gallery-section">
             <div class="section-header" style="text-align: center; margin-bottom: 45px;">
                 <span class="section-tag" style="color: var(--color-orange); text-transform: uppercase; font-size: 13px; font-weight: 700; letter-spacing: 2px; display: inline-block; margin-bottom: 8px;">Perspectivas do Projeto</span>
@@ -478,19 +488,23 @@
             </div>
             
             <div class="gallery-container">
+                <!-- Card Esquerdo: Fachada (Vertical) -->
                 <div class="gallery-card-wrapper" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0, 0, 0, 0.3)'">
                     <a href="https://ibb.co/1GQTr8HM" target="_blank" style="display: block; width: 100%; height: 100%;">
                         <img src="https://i.ibb.co/HT4qtnmC/Fachada.png" alt="Átrio Boutique Haus - Fachada Principal" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                     </a>
                 </div>
                 
+                <!-- Card Direito: Duas Imagens Horizontais Empilhadas -->
                 <div class="gallery-right-col">
+                    <!-- Foto: Vista da Piscina -->
                     <div class="gallery-card-wrapper" style="min-height: 228px; flex: 1;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0, 0, 0, 0.3)'">
                         <a href="https://ibb.co/PzggZtz6" target="_blank" style="display: block; width: 100%; height: 100%;">
                             <img src="https://i.ibb.co/8499DX47/TRIO-Urban-Company-11.png" alt="Átrio Boutique Haus - Vista Piscina" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                         </a>
                     </div>
                     
+                    <!-- Foto: Localização Panorâmica -->
                     <div class="gallery-card-wrapper" style="min-height: 228px; flex: 1;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0, 0, 0, 0.3)'">
                         <a href="https://ibb.co/YFQvYj1r" target="_blank" style="display: block; width: 100%; height: 100%;">
                             <img src="https://i.ibb.co/DHW3sKvq/TRIO-Urban-Company-9.png" alt="Átrio Boutique Haus - Localização" style="width: 100%; height: 100%; object-fit: cover; display: block;">
@@ -500,6 +514,7 @@
             </div>
         </section>
 
+        <!-- SEÇÃO DE FECHAMENTO / CONTATO -->
         <div id="contato" class="cta-container" style="margin-top: 100px;">
             <h2 style="margin-bottom: 15px; font-size: 2.2rem;">Deseja analisar o cronograma e fluxo de caixa completo?</h2>
             <p style="color: #aaa; margin-bottom: 35px; max-width: 650px; margin-left: auto; margin-right: auto; font-size: 1.05rem;">
@@ -512,6 +527,7 @@
 
     </div>
 
+    <!-- RODAPÉ -->
     <footer>
         <p>&copy; 2026 Urban Company • Inteligência Imobiliária. Todos os direitos reservados.</p>
         <p style="font-size: 0.8rem; margin-top: 8px; color: #444;">As projeções de rentabilidade e dados técnicos são preliminares e baseados em análises computacionais de viabilidade do mercado imobiliário regional.</p>
