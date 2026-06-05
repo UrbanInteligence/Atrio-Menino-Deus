@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Átrio Boutique Haus - Urban Company</title>
     <style>
-        /* RESET E CONFIGURAÇÕES BÁSICAS */
+        /* RESET E VARIÁVEIS PREMIUM */
         :root {
-            --bg-main: #0d0d0d;
-            --bg-card: #14100d;        
-            --bg-accent: #291e14;      
+            --bg-main: #0a0a0a;
+            --border-color: rgba(244, 178, 102, 0.15); /* Cobre sutil */
             --color-text: #ffffff;
-            --color-muted: #e6dad1;    
-            --color-gold: #f4b266;     
-            --color-orange: #ff7640;   
-            --color-green: #00ff87;    
+            --color-muted: #a39892;    
+            --color-gold: #f4b266;     /* Ouro Sunset */
+            --color-orange: #ff7640;   /* Cobre Vibrante */
+            --color-green: #00ff87;    /* Verde Esmeralda Digital */
         }
 
         * {
@@ -22,32 +21,30 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
             background-color: var(--bg-main);
             color: var(--color-text);
-            line-height: 1.5;
+            line-height: 1.4;
             overflow-x: hidden;
         }
 
         a { text-decoration: none; color: inherit; }
 
-        /* HERO SECTION */
+        /* HERO CLEAN & DIRECT */
         .hero {
-            position: relative;
-            min-height: 65vh;
+            min-height: 45vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('https://i.ibb.co/HT4qtnmC/Fachada.png');
-            background-size: cover;
-            background-position: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .hero-content { max-width: 800px; z-index: 2; }
+        .hero-content { max-width: 800px; }
 
         .hero-tag {
             color: var(--color-orange);
@@ -57,156 +54,140 @@
             letter-spacing: 3px;
             margin-bottom: 15px;
             display: inline-block;
-            background: rgba(255, 118, 64, 0.1);
-            padding: 4px 12px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 118, 64, 0.2);
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-            background: linear-gradient(to right, #ffffff, var(--color-gold));
+            letter-spacing: -1.5px;
+            margin-bottom: 10px;
+            background: linear-gradient(180deg, #ffffff 0%, var(--color-gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p { font-size: 1.1rem; color: #cccccc; }
+        .hero p { font-size: 1.15rem; color: var(--color-muted); font-weight: 300; }
 
-        /* CONTAINER */
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+        /* CONTAINER INFINITO (SEM CARDS FECHADOS) */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-        /* CARDS DE VIABILIDADE COMPACTOS */
-        section.viabilidade-section {
-            margin-bottom: 35px;
-            background-color: var(--bg-card);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--bg-accent);
-            border-top: 4px solid var(--color-gold);
+        /* SEÇÃO DE FLUXO CONTÍNUO */
+        .viabilidade-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+            align-items: center;
         }
 
-        section.viabilidade-section:nth-of-type(2) { border-top-color: var(--color-orange); }
-        section.viabilidade-section:last-of-type { border-top-color: var(--color-green); }
-
-        .section-header-viabilidade { margin-bottom: 20px; }
+        .section-info { max-width: 450px; }
 
         .section-tag-viabilidade {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--color-orange);
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 800;
+            font-weight: 700;
             display: block;
-            margin-bottom: 3px;
-        }
-
-        h2.section-title { font-size: 1.6rem; color: #ffffff; font-weight: 700; }
-
-        /* METRICAS HORIZONTAIS COMPACTAS */
-        .metric-inline-group {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .metric-inline-card {
-            flex: 1;
-            min-width: 180px;
-            border: 1px solid var(--color-orange);
-            border-radius: 8px;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .metric-inline-label { font-size: 0.9rem; color: var(--color-muted); font-weight: 600; }
-        .metric-inline-value { font-size: 1.4rem; font-weight: 800; color: #ffffff; }
-
-        /* LISTA ULTRA ENXUTA */
-        ul.compact-list { list-style: none; }
-        ul.compact-list li {
-            font-size: 0.95rem;
-            color: var(--color-muted);
             margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
         }
-        ul.compact-list li::before { content: "☀️"; position: absolute; left: 0; font-size: 0.85rem; }
-        ul.compact-list strong { color: var(--color-gold); }
 
-        /* FLUXO DE DADOS DINÂMICO */
-        .data-list-flow { display: flex; flex-direction: column; gap: 10px; }
+        h2.section-title { font-size: 2rem; color: #ffffff; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 15px; }
+        
+        .section-desc { font-size: 0.95rem; color: var(--color-muted); font-weight: 300; }
 
-        .data-row-flow {
+        /* HIGHLIGHT EXCLUSIVO PARA OS NÚMEROS (FOCO DO INVESTIDOR) */
+        .investor-data-display {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Destaque principal numérico */
+        .main-number-callout {
+            text-align: right;
+        }
+
+        .giant-number {
+            font-size: 4.2rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -2px;
+            display: block;
+        }
+        
+        /* Gradientes para chamar atenção imediata */
+        .giant-number.gold { background: linear-gradient(135deg, #ffffff, var(--color-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .giant-number.orange { background: linear-gradient(135deg, #ffffff, var(--color-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .giant-number.green { background: linear-gradient(135deg, #00ff87, #00b35e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .number-label {
+            font-size: 0.85rem;
+            color: var(--color-orange);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Lista de Dados Corporativa */
+        .data-rows-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .data-item-inline {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 16px;
-            border-radius: 6px;
-            border: 1px solid rgba(230, 218, 209, 0.08);
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .data-row-flow.highlighted {
-            border: 1px solid var(--color-green);
-            background: rgba(0, 255, 135, 0.02);
-        }
+        .data-item-inline:last-child { border-bottom: none; }
 
-        .data-label-flow { font-size: 0.95rem; color: var(--color-text); }
-        .data-value-group { display: flex; align-items: center; gap: 15px; }
-        .data-value-flow { font-size: 1rem; font-weight: 700; }
+        .item-label { font-size: 0.95rem; color: var(--color-muted); }
+        .item-value { font-size: 1.1rem; font-weight: 700; color: #ffffff; }
+        .item-value.green { color: var(--color-green); }
 
-        /* BADGES */
-        .badge-flow {
+        /* GALERIA INTEGRADA */
+        .gallery-section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
+        .gallery-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
+        .gallery-wrapper { position: relative; border-radius: 6px; overflow: hidden; min-height: 340px; background: #121212; border: 1px solid rgba(255,255,255,0.05); }
+        .gallery-stack { display: flex; flex-direction: column; gap: 20px; }
+
+        /* CALL TO ACTION */
+        .cta-container { text-align: center; padding: 80px 20px; }
+        .cta-container p { color: var(--color-muted); margin-bottom: 25px; font-size: 1rem; }
+        
+        .btn-investor {
             display: inline-block;
-            padding: 3px 10px;
+            background: #ffffff;
+            color: #000000;
+            padding: 16px 40px;
+            font-size: 14px;
+            font-weight: 700;
             border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: 1px solid transparent;
+            letter-spacing: 2px;
+            transition: background 0.2s ease;
         }
+        .btn-investor:hover { background: var(--color-gold); }
 
-        .badge-flow-red { border-color: #a82c2c; color: #ff9494; background: rgba(168, 44, 44, 0.1); }
-        .badge-flow-green { border-color: var(--color-green); color: var(--color-green); background: rgba(0, 255, 135, 0.1); }
-        .badge-flow-gold { border-color: var(--color-gold); color: var(--color-gold); background: rgba(244, 178, 102, 0.1); }
+        footer { padding: 40px 20px; text-align: center; color: #444; font-size: 0.8rem; }
 
-        /* BOTÃO E FOOTER */
-        .cta-container { text-align: center; margin: 40px 0; }
-        .btn-premium {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff6b00, #e05e00);
-            color: #fff;
-            padding: 14px 35px;
-            font-size: 15px;
-            font-weight: 700;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2);
-            transition: transform 0.2s ease;
-        }
-        .btn-premium:hover { transform: translateY(-2px); }
-
-        /* GALERIA COMPACTA */
-        .gallery-section { margin: 50px auto; }
-        .gallery-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-        .gallery-card-wrapper { position: relative; border-radius: 8px; overflow: hidden; min-height: 320px; background: #141414; }
-        .gallery-right-col { display: flex; flex-direction: column; gap: 16px; }
-
-        footer { background: #080808; padding: 40px 20px; text-align: center; border-top: 1px solid #1a1a1a; color: #555; font-size: 0.85rem; }
-
+        /* RESPONSIVIDADE */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            h2.section-title { font-size: 1.4rem; }
-            .data-row-flow { flex-direction: column; align-items: flex-start; gap: 6px; }
-            .data-value-group { width: 100%; justify-content: space-between; }
-            .gallery-card-wrapper { min-height: 240px; }
+            .hero h1 { font-size: 2.4rem; }
+            .viabilidade-section { grid-template-columns: 1fr; gap: 30px; padding: 40px 0; }
+            .main-number-callout { text-align: left; }
+            .giant-number { font-size: 3.2rem; }
+            .gallery-container { grid-template-columns: 1fr; }
+            .gallery-wrapper { min-height: 240px; }
         }
     </style>
 </head>
@@ -215,145 +196,131 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-tag">Urban Company • Inteligência Estratégica</span>
+            <span class="hero-tag">Urban Company • Relatório de Performance</span>
             <h1>Átrio Boutique Haus</h1>
-            <p>Estudo de Viabilidade e Performance de Ativos Corporativos.</p>
+            <p>Viabilidade Computacional e Engenharia Financeira de Cenários.</p>
         </div>
     </section>
 
     <div class="container">
         
-        <!-- SEÇÃO 1: MERCADO -->
+        <!-- FLUXO 01: DEMANDA -->
         <section class="viabilidade-section">
-            <div class="section-header-viabilidade">
-                <span class="section-tag-viabilidade">Análise de Mercado</span>
-                <h2 class="section-title">01. Validação da Demanda</h2>
+            <div class="section-info">
+                <span class="section-tag-viabilidade">Validação de Demanda</span>
+                <h2 class="section-title">01. Ativo de Alta Liquidez</h2>
+                <p class="section-desc">Localizado na Rua Barbedo, 303 (Menino Deus). Estrutura desenhada sob medida para o ecossistema de Short Stay, maximizando a tração de locação digital a apenas 3 minutos do Hospital Mãe de Deus.</p>
             </div>
             
-            <div class="metric-inline-group">
-                <div class="metric-inline-card">
-                    <span class="metric-inline-label">Walk Score</span>
-                    <span class="metric-inline-value" style="color: var(--color-orange);">96 / 100</span>
+            <div class="investor-data-display">
+                <div class="main-number-callout">
+                    <span class="giant-number orange">96 / 100</span>
+                    <span class="number-label">Walk Score • Walker's Paradise</span>
                 </div>
-                <div class="metric-inline-card" style="border-color: var(--color-gold);">
-                    <span class="metric-inline-label">Modelo</span>
-                    <span class="metric-inline-value" style="color: var(--color-gold);">Short Stay</span>
+                <div class="data-rows-compact">
+                    <div class="data-item-inline">
+                        <span class="item-label">Público-Alvo Primário</span>
+                        <span class="item-value">Corporativo & Saúde</span>
+                    </div>
+                    <div class="data-item-inline">
+                        <span class="item-label">Modelo de Locação</span>
+                        <span class="item-value" style="color: var(--color-gold);">Digital Flexível (Short Stay)</span>
+                    </div>
                 </div>
             </div>
-
-            <ul class="compact-list">
-                <li><strong>Localização Privilegiada:</strong> Rua Barbedo, 303 — Coração do Menino Deus.</li>
-                <li><strong>Hub de Saúde:</strong> A 3 min. a pé do Hospital Mãe de Deus e Parque Marinha.</li>
-                <li><strong>Blindagem Comercial:</strong> Foco em alta liquidez com compactos premium.</li>
-            </ul>
         </section>
 
-        <!-- SEÇÃO 2: MARGEM DE PROTEÇÃO -->
+        <!-- FLUXO 02: MARGEM DE AQUISIÇÃO -->
         <section class="viabilidade-section">
-            <div class="section-header-viabilidade">
-                <span class="section-tag-viabilidade">Estratégia de Entrada</span>
-                <h2 class="section-title">02. Margem de Aquisição</h2>
+            <div class="section-info">
+                <span class="section-tag-viabilidade">Assimetria de Entrada</span>
+                <h2 class="section-title">02. Margem de Segurança</h2>
+                <p class="section-desc">A captura de valor ocorre diretamente na originação. O lote de oportunidade garante aquisição abaixo do valor de tabela de abertura do lançamento oficial.</p>
             </div>
-
-            <div class="data-list-flow">
-                <div class="data-row-flow">
-                    <span class="data-label-flow">Tabela Regular Lançamento</span>
-                    <div class="data-value-group">
-                        <span class="data-value-flow">R$ 310.681,97</span>
-                        <span class="badge-flow badge-flow-red">Público Geral</span>
-                    </div>
+            
+            <div class="investor-data-display">
+                <div class="main-number-callout">
+                    <span class="giant-number green">R$ 26.390</span>
+                    <span class="number-label">Ganho Imediato no Pré-Lançamento</span>
                 </div>
-                <div class="data-row-flow">
-                    <span class="data-label-flow" style="color: var(--color-gold); font-weight: bold;">Lote Exclusivo Atual</span>
-                    <div class="data-value-group">
-                        <span class="data-value-flow" style="color: var(--color-gold);">R$ 284.291,00</span>
-                        <span class="badge-flow badge-flow-gold">Seu Lote</span>
+                <div class="data-rows-compact">
+                    <div class="data-item-inline">
+                        <span class="item-label">Tabela de Lançamento Regular</span>
+                        <span class="item-value">R$ 310.681,97</span>
                     </div>
-                </div>
-                <div class="data-row-flow highlighted">
-                    <span class="data-label-flow" style="color: var(--color-green); font-weight: bold;">Desconto Real na Entrada</span>
-                    <div class="data-value-group">
-                        <span class="data-value-flow" style="color: var(--color-green);">R$ 26.390,97</span>
-                        <span class="badge-flow badge-flow-green">Ganho Imediato</span>
+                    <div class="data-item-inline">
+                        <span class="item-label">Lote Cortesia Investidor</span>
+                        <span class="item-value" style="color: var(--color-gold);">R$ 284.291,00</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO 3: EVOLUÇÃO PATRIMONIAL -->
+        <!-- FLUXO 03: EVOLUÇÃO PATRIMONIAL -->
         <section class="viabilidade-section">
-            <div class="section-header-viabilidade">
-                <span class="section-tag-viabilidade">Evolução Patrimonial</span>
-                <h2 class="section-title">03. Projeção de Valorização (Obra)</h2>
+            <div class="section-info">
+                <span class="section-tag-viabilidade">Evolução do Ativo</span>
+                <h2 class="section-title">03. Curva de Valorização</h2>
+                <p class="section-desc">Cenário de valorização patrimonial linear estimado ao longo dos 36 meses de execução de obra, performando ganho composto sobre o aporte inicial.</p>
             </div>
-
-            <div class="data-list-flow">
-                <div class="data-row-flow">
-                    <span class="data-label-flow">Pré-Lançamento (Base)</span>
-                    <div class="data-value-group">
-                        <span class="data-value-flow">R$ 310.681,97</span>
-                        <span class="badge-flow" style="color: var(--color-muted); border-color: rgba(255,255,255,0.1)">Inicial</span>
-                    </div>
+            
+            <div class="investor-data-display">
+                <div class="main-number-callout">
+                    <span class="giant-number gold">R$ 436.485</span>
+                    <span class="number-label">Projeção de Valor na Entrega (Ano 3)</span>
                 </div>
-                <div class="data-row-flow">
-                    <span class="data-label-flow">Fim do Ano 1</span>
-                    <div class="data-value-group">
-                        <span class="data-value-flow">R$ 347.963,80</span>
-                        <span class="badge-flow badge-flow-green">+ R$ 37.281</span>
+                <div class="data-rows-compact">
+                    <div class="data-item-inline">
+                        <span class="item-label">Evolução Ano 1 (Obra)</span>
+                        <span class="item-value">R$ 347.963,80</span>
                     </div>
-                </div>
-                <div class="data-row-flow">
-                    <span class="data-label-flow">Fim do Ano 2</span>
-                    <div class="data-value-group">
-                        <span class="data-value-flow">R$ 389.719,46</span>
-                        <span class="badge-flow badge-flow-green">+ R$ 79.037</span>
+                    <div class="data-item-inline">
+                        <span class="item-label">Evolução Ano 2 (Obra)</span>
+                        <span class="item-value">R$ 389.719,46</span>
                     </div>
-                </div>
-                <div class="data-row-flow" style="border-color: var(--color-gold);">
-                    <span class="data-label-flow" style="color: var(--color-gold); font-weight: bold;">Entrega das Chaves (Ano 3)</span>
-                    <div class="data-value-group">
-                        <span class="data-value-flow">R$ 436.485,80</span>
-                        <span class="badge-flow badge-flow-green" style="background: var(--color-green); color: #000; font-weight:800;">+ R$ 125.803</span>
+                    <div class="data-item-inline">
+                        <span class="item-label">Lucro Projetado em Obra</span>
+                        <span class="item-value green">+ R$ 125.803,83</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO GALERIA -->
+        <!-- GALERIA ARQUITETÔNICA INTEGRADA -->
         <section class="gallery-section">
             <div class="gallery-container">
-                <div class="gallery-card-wrapper">
+                <div class="gallery-wrapper">
                     <a href="https://ibb.co/1GQTr8HM" target="_blank">
                         <img src="https://i.ibb.co/HT4qtnmC/Fachada.png" alt="Fachada" style="width:100%; height:100%; object-fit:cover; display:block;">
                     </a>
                 </div>
-                <div class="gallery-right-col">
-                    <div class="gallery-card-wrapper" style="min-height:152px; flex:1;">
+                <div class="gallery-stack">
+                    <div class="gallery-wrapper" style="min-height:160px; flex:1;">
                         <a href="https://ibb.co/PzggZtz6" target="_blank">
-                            <img src="https://i.ibb.co/8499DX47/TRIO-Urban-Company-11.png" alt="Piscina" style="width:100%; height:100%; object-fit:cover; display:block;">
+                            <img src="https://i.ibb.co/8499DX47/TRIO-Urban-Company-11.png" alt="Piscina Rooftop" style="width:100%; height:100%; object-fit:cover; display:block;">
                         </a>
                     </div>
-                    <div class="gallery-card-wrapper" style="min-height:152px; flex:1;">
+                    <div class="gallery-wrapper" style="min-height:160px; flex:1;">
                         <a href="https://ibb.co/YFQvYj1r" target="_blank">
-                            <img src="https://i.ibb.co/DHW3sKvq/TRIO-Urban-Company-9.png" alt="Localização" style="width:100%; height:100%; object-fit:cover; display:block;">
+                            <img src="https://i.ibb.co/DHW3sKvq/TRIO-Urban-Company-9.png" alt="Implantação Urbana" style="width:100%; height:100%; object-fit:cover; display:block;">
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CONTATO -->
+        <!-- FECHAMENTO CONVERSÃO -->
         <div class="cta-container">
-            <p style="color: #aaa; margin-bottom: 20px; font-size: 0.95rem;">Fale diretamente com Régis Teixeira para acessar o fluxo de caixa detalhado.</p>
-            <a href="https://wa.me/5551996563871?text=Ol%C3%A1%20R%C3%A9gis%2C%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20%C3%81trio%20Boutique%20Haus" target="_blank" class="btn-premium" style="background: linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);">
-                Chamar no WhatsApp
+            <p>Gostaria de analisar as condições de pagamento e a planilha de fluxo de caixa deste lote?</p>
+            <a href="https://wa.me/5551996563871?text=Ol%C3%A1%20R%C3%A9gis%2C%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20%C3%81trio%20Boutique%20Haus" target="_blank" class="btn-investor">
+                Contatar Régis Teixeira
             </a>
         </div>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Urban Company • Inteligência Imobiliária.</p>
+        <p>&copy; 2026 Urban Company • Inteligência de Negócios Imobiliários.</p>
     </footer>
 
 </body>
